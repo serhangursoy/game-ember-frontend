@@ -1,0 +1,30 @@
+{{#paper-toolbar}}
+  {{#paper-toolbar-tools}}
+    <h2>
+      {{ titleMessage }}
+    </h2>
+    <span class="flex"></span>
+    {{#paper-button iconButton=true}}
+      {{paper-icon "power_settings_new"}}
+    {{/paper-button}}
+  {{/paper-toolbar-tools}}
+{{/paper-toolbar}}
+
+<div class="layout-row layout-align-center-center layout-padding layout-fill layout-margin dashboard-align">
+  {{paper-input label="Title" placeholder="Title for your game" value=name onChange=(action (mut newGameTitle))}}
+
+  {{#paper-select
+    label="User"
+    options=users
+    selected=selectedUser
+    onChange=(action (mut selectedUser))
+    as |usr|}}
+    {{usr.username}}
+  {{/paper-select}}
+
+  {{#paper-button accent=true raised=true dark="true" onClick=(action "create")}}Create{{/paper-button}}
+</div>
+
+
+
+{{outlet}}

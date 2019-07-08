@@ -1,0 +1,24 @@
+{{#paper-toolbar}}
+  {{#paper-toolbar-tools}}
+    <h2>
+      {{ titleMessage }}
+    </h2>
+    <span class="flex"></span>
+  {{/paper-toolbar-tools}}
+{{/paper-toolbar}}
+
+<div class="holder">
+  <div class="layout-column layout-align-center-center">
+    <h2>Hello stranger, who are you?</h2>
+  </div>
+  <div class="layout-row layout-align-center-center layout-padding layout-margin holder">
+    <div class="layout-column layout-fill layout-margin login-section">
+      {{paper-input label="Name" placeholder="Enter your name" value=name onChange=(action (mut loginName))}}
+      {{#paper-button primary=true raised=true onClick=(action "login")}}Login{{/paper-button}}
+    </div>
+    <div class="layout-column layout-fill layout-margin login-section">
+      {{paper-input label="Name" placeholder="Enter your name" value=name onChange=(action (mut registerName))}}
+      {{#paper-button accent=true raised=true dark="true" onClick=(action "register")}}Register{{/paper-button}}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+// Define desired color palettes for each intention.
+$primary: "teal";
+$accent: "light-green";
+$warn: "pink";
+// Import ember-paper.
+@import 'ember-paper';
+
+
+.holder {
+  margin-top: 10%;
+}
+.dashboard-align{
+  margin-top: 5%;
+}
+.login-section {
+  width: 50% !important;
+}
