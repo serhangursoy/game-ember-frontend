@@ -44,6 +44,12 @@ export default Service.extend({
       window.location.href = "/login";
     }
   },
+  checkIfLoggedIn(){
+    let cookieService = this.get('cookies');
+    if (cookieService.exists('uid')) {
+      window.location.href = "/dashboard";
+    }
+  },
   getUserID(){
     let cookieService = this.get('cookies');
     return cookieService.read('uid');

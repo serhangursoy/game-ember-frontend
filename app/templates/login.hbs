@@ -7,6 +7,12 @@
   {{/paper-toolbar-tools}}
 {{/paper-toolbar}}
 
+{{#if haveError}}
+  {{#paper-toast duration=5000 as |toast|}}
+    {{#toast.text}}{{errorMessage}}!{{/toast.text}}
+  {{/paper-toast}}
+{{/if}}
+
 <div class="holder">
   <div class="layout-column layout-align-center-center">
     <h2>Hello stranger, who are you?</h2>

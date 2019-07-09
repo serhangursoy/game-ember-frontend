@@ -1,4 +1,4 @@
-
+<!-- Toolbar -->
 {{#paper-toolbar}}
   {{#paper-toolbar-tools}}
     {{#paper-button onClick=(action "goToDashboard") }}
@@ -13,8 +13,9 @@
     {{/paper-button}}
   {{/paper-toolbar-tools}}
 {{/paper-toolbar}}
+<!-- Toolbar END -->
 
-
+<!-- Dialog -->
 {{#if isEnded}}
   {{#paper-dialog fullscreen=fullscreen openFrom="#paper-dialog-demo" closeTo="#bottom-of-card"}}
     {{#paper-dialog-content}}
@@ -32,8 +33,9 @@
     {{/paper-dialog-actions}}
   {{/paper-dialog}}
 {{/if}}
+<!-- Dialog END -->
 
-
+<!-- Gameboard -->
 <div class="gameboard {{unless this.didLoad "disabled"}}">
   <h2>
     Its
@@ -58,11 +60,7 @@
     </div>
   {{/unless}}
 </div>
-
-
-
-
-  <div class="layout-row layout-wrap layout-center">
+<div class="layout-row layout-wrap layout-center">
     {{#each board as |item index|}}
       {{#if (eq item 1)}}
         <div class="cell filled flex-30 glowBlue">
@@ -81,6 +79,6 @@
     {{/each}}
   </div>
 </div>
-
+<!-- Gameboard END -->
 
 {{outlet}}

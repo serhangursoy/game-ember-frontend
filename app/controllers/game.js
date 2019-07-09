@@ -26,7 +26,7 @@ export default Controller.extend({
     let gameData = response.data;
     let stringEq = this.board.join();
     if(gameData.table != stringEq) {
-      console.log("New move detected", response.data);
+      console.log("New move detected!", response.data);
       let newTurn = this.turn==1?2:1;
       let comparer = (parseInt(this.uid) === gameData.p1)?1:2;
       if(newTurn === comparer){
@@ -39,12 +39,6 @@ export default Controller.extend({
       this.set("didLoad", true);
       this.set("isEnded", gameData.finished);
       this.set("winner", gameData.winner);
-      this.notifyPropertyChange('turn');
-      this.notifyPropertyChange('isEnded');
-      this.notifyPropertyChange('winner');
-      this.notifyPropertyChange('didLoad');
-      this.notifyPropertyChange('board');
-      this.notifyPropertyChange('notUserTurn');
     }
   },
   init: function () {
@@ -65,7 +59,6 @@ export default Controller.extend({
       promise.then((response) => {
           let gameData=response.data;
           if((parseInt(this.uid) !== gameData.p1) && (parseInt(this.uid) !== gameData.p2)) window.location.href =  "/dashboard";
-          console.log("INIT",gameData);
           this.set("titleMessage", gameData.title);
           if((parseInt(this.uid) === gameData.p1)){
             this.set("isOwner",true);
@@ -99,6 +92,7 @@ export default Controller.extend({
     cellClick: function(which,event){
       let boardChanged = this.board.slice(0)
       boardChanged[which] = this.turn;
+
       /* Check if game is ended */
       let finished = false;
       if((which%3) === 1) {
@@ -166,15 +160,16 @@ export default Controller.extend({
         }
       }
       /**/
+
       let winner =null;
       if(finished){
         winner = parseInt(this.uid);
-        console.log("FINISHED. YOU WON!");
       }
 
       let stringEq = boardChanged.join();
       let newTurn = this.turn==1?2:1;
-      console.log("CELL CLICKED " + newTurn);
+
+      // Let backend knows that as well!
       const promise = this.service.updateGame( { table: stringEq, turn: newTurn, winner: winner, finished: finished },  this.gid );
       promise.then( (response) => { console.log("Click event sent. Resp:",response)}).catch( ( error ) => {
           console.log( error );

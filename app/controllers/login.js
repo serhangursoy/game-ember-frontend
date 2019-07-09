@@ -6,10 +6,15 @@ export default Controller.extend({
   titleMessage: "Welcome!",
   loginName: "",
   registerName: "",
+  errorMessage: "Wrong username",
+  haveError: false,
   LoginCallback: function(response) {
     console.log("Logged In. User data ", response.data);
+    let self = this;
     if(response.data) {
       this.get('main').loginUser(response.data);
+    } else {
+      this.set("haveError",true);
     }
   },
   RegisterCallback: function(response) {
@@ -18,16 +23,18 @@ export default Controller.extend({
       this.get('main').loginUser(response.data);
     }
   },
+  init: function () {
+    this._super();
+    this.get('main').checkIfLoggedIn();
+  },
   actions: {
     login() {
-      console.log("Login with ", this.loginName);
       const promise = this.get('main').getUser(this.loginName);
       promise.then( this.LoginCallback.bind(this) ).catch( ( error ) => {
         console.log( error );
      });
     },
     register() {
-      console.log("Register with " + this.registerName);
       const promise = this.get('main').createUser(this.registerName);
       promise.then( this.RegisterCallback.bind(this) ).catch( ( error ) => {
         console.log( error );

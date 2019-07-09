@@ -32,7 +32,8 @@ $warn: "pink";
   width: 500px;
   height: 500px;
   padding:5%;
-  padding-left: 33%;
+  padding-top: 1%;
+  padding-left: 34%;
 }
 
 .gameboard>div{
@@ -69,4 +70,8 @@ $warn: "pink";
 .checkmark>md-icon {
   color: green !important;
   font-size: 30px !important;
+}
+
+md-toast .md-toast-content {
+  background-color: #ff2828 !important;
 }
