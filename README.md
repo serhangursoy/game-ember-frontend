@@ -1,7 +1,7 @@
-# tictac-front
+# Tic Tac Toe with EmberJs
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+This is a really really simple tic-tac-toe game. It's designed for it's own ruby backend,
+however, if you have exact endpoints, you can use for any backend you want.
 
 ## Prerequisites
 
@@ -14,8 +14,8 @@ You will need the following things properly installed on your computer.
 
 ## Installation
 
-* `git clone <repository-url>` this repository
-* `cd tictac-front`
+* `git clone https://github.com/serhangursoy/game-ember-frontend.git`
+* `cd game-ember-frontend`
 * `npm install`
 
 ## Running / Development
@@ -43,10 +43,6 @@ Make use of the many generators for code, try `ember help generate` for more det
 
 * `ember build` (development)
 * `ember build --environment production` (production)
-
-### Deploying
-
-Specify what it takes to deploy your app.
 
 ## Further Reading / Useful Links
 
