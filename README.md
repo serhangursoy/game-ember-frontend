@@ -1,7 +1,17 @@
+<p align="center">
+  <img width="400" height="300" src="https://cdn.dribbble.com/users/108183/screenshots/5288723/tic_tac_toe_loader_.gif">
+</p>
+
 # Tic Tac Toe with EmberJs
 
 This is a really really simple tic-tac-toe game. It's designed for it's own ruby backend,
 however, if you have exact endpoints, you can use for any backend you want.
+
+# Screenshots
+
+![](http://tw.greywool.com/i/A5GRM.jpg)
+![](http://tw.greywool.com/i/x3i-E.jpg)
+![](http://tw.greywool.com/i/5N1cK.jpg)
 
 ## Prerequisites
 
