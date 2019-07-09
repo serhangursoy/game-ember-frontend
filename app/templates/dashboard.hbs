@@ -4,7 +4,7 @@
       {{ titleMessage }}
     </h2>
     <span class="flex"></span>
-    {{#paper-button iconButton=true}}
+    {{#paper-button iconButton=true onClick=(action "logout")}}
       {{paper-icon "power_settings_new"}}
     {{/paper-button}}
   {{/paper-toolbar-tools}}
@@ -26,5 +26,34 @@
 </div>
 
 
+{{#paper-subheader}} Owned Games {{/paper-subheader}}
+  {{#each userOwnedGames as |item|}}
+    {{#paper-item onClick=(action "goToGame" item)}}
+      <p>{{item.title}}</p>
+      <div class="md-secondary-container">
+        {{#if item.finished}}
+          <div class="checkmark">
+            {{paper-icon "check-circle" size=24}}
+          </div>
+        {{/if}}
+      </div>
+    {{/paper-item}}
+  {{/each}}
+
+  {{paper-divider}}
+
+  {{#paper-subheader}} Invited Games {{/paper-subheader}}
+    {{#each userInvitedGames as |item|}}
+      {{#paper-item onClick=(action "goToGame" item)}}
+        <p>{{item.title}}</p>
+        <div class="md-secondary-container">
+          {{#if item.finished}}
+            <div class="checkmark">
+              {{paper-icon "check-circle" size=24}}
+            </div>
+          {{/if}}
+        </div>
+      {{/paper-item}}
+  {{/each}}
 
 {{outlet}}

@@ -1,1 +1,86 @@
+
+{{#paper-toolbar}}
+  {{#paper-toolbar-tools}}
+    {{#paper-button onClick=(action "goToDashboard") }}
+    Back
+    {{/paper-button}}
+    <h2>
+      Game: {{ titleMessage }}
+    </h2>
+    <span class="flex"></span>
+    {{#paper-button iconButton=true}}
+      {{paper-icon "power_settings_new"}}
+    {{/paper-button}}
+  {{/paper-toolbar-tools}}
+{{/paper-toolbar}}
+
+
+{{#if isEnded}}
+  {{#paper-dialog fullscreen=fullscreen openFrom="#paper-dialog-demo" closeTo="#bottom-of-card"}}
+    {{#paper-dialog-content}}
+      <h2 class="md-title">Game over</h2>
+      {{#if this.notUserTurn}}
+          <p>You won! This requires a celebration</p>
+      {{/if}}
+      {{#unless this.notUserTurn}}
+        <p>You fought hard, but you have lost!.</p>
+      {{/unless}}
+    {{/paper-dialog-content}}
+    {{#paper-dialog-actions class="layout-row"}}
+      <span class="flex"></span>
+      {{#paper-button primary=true onClick=(action "goToDashboard")}}Go back{{/paper-button}}
+    {{/paper-dialog-actions}}
+  {{/paper-dialog}}
+{{/if}}
+
+
+<div class="gameboard {{unless this.didLoad "disabled"}}">
+  <h2>
+    Its
+    {{if this.notUserTurn "opponents"}}
+    {{unless this.notUserTurn "your"}}
+    turn
+  </h2>
+  <div class="layout-row flex">
+  <div class="flex-30">You are playing as</div>
+  {{#if this.isOwner}}
+    <div class="flex-10">
+        <div class="glowBlue">
+            {{paper-icon "radio_button_unchecked"}}
+        </div>
+    </div>
+  {{/if}}
+  {{#unless this.isOwner}}
+    <div class="flex-10">
+        <div class="glowGreen">
+            {{paper-icon "close"}}
+        </div>
+    </div>
+  {{/unless}}
+</div>
+
+
+
+
+  <div class="layout-row layout-wrap layout-center">
+    {{#each board as |item index|}}
+      {{#if (eq item 1)}}
+        <div class="cell filled flex-30 glowBlue">
+          {{paper-icon "radio_button_unchecked"}}
+        </div>
+      {{/if}}
+      {{#if (eq item 2)}}
+        <div class="cell filled flex-30 glowGreen">
+          {{paper-icon "close"}}
+        </div>
+      {{/if}}
+      {{#if (eq item 0)}}
+        <div class="flex-30 cell {{if this.notUserTurn "disabled"}} {{unless this.didLoad "disabled"}}" onclick={{ action "cellClick" index}}>
+        </div>
+      {{/if}}
+    {{/each}}
+  </div>
+</div>
+
+
 {{outlet}}

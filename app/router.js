@@ -8,8 +8,12 @@ const Router = EmberRouter.extend({
 
 Router.map(function() {
   this.route('login');
+  this.route('dashboard',{ path: '/' });
   this.route('dashboard');
-  this.route('game');
+  this.route('game',function() {
+    this.route('game', { path: '/:hash' });
+    this.route('login', { path: '/' });
+  });
 });
 
 export default Router;
